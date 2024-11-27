@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    font-size: 14px;
+}
+li{
+    list-style: none;
+}
+li::marker {
+    font-size: 24px;
+  }
+h1{
+    font-size:2rem;
+    font-weight:700;
+    font-family: 'Times New Roman', 'Georgia', 'Times', 'serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+}
+h2{
+    font-size:1.5rem;
+    font-weight:700;
+}
+h3{
+    font-size:1rem;
+    font-weight:700;
+}
+img{
+    object-fit:cover;
+    width: 100%;
+}
+.crop-text1{
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+}
+.crop-text2{
+-webkit-line-clamp: 2;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+}
