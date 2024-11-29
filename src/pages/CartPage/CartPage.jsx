@@ -12,6 +12,7 @@ const CartPage = () => {
           maximumFractionDigits: 0,
         }).format(amount);
       };
+      
   return (
     <div className='max-w-[1340px] mx-auto'>
         <h1 className='text-5xl my-8'>Giỏ hàng</h1>

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RatingComponent } from '../RatingComponent/RatingComponent';
 import { ButtonComponent } from '../ButtonComponent/ButtonComponent';
@@ -8,17 +7,10 @@ import { addItem } from '../../redux/slides/cartSlice';
 
 
 export const CardCourse = ({listCourses}) => {
-  const [isOpen, setIsOpen] = useState(false);
   const listCart = useSelector((state)=>state.cart.data)||[]
   const dispatch = useDispatch()
   let updatedCart = [...listCart];
 
-  const handleMouseOver = () => {
-    setIsOpen(true);
-  };
-  const handleMouseLeave = () => {
-    setIsOpen(false);
-  };
   const AddCart = (listCourses) =>{ 
     dispatch(addItem(listCourses))
     updatedCart.push(listCourses); 
@@ -26,7 +18,7 @@ export const CardCourse = ({listCourses}) => {
   }
   
   return (
-    <div className='relative grid grid-rows-1 gap-2 justify-items-center p-2 border mx-1' onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+    <div className='relative grid grid-rows-1 gap-2 justify-items-center p-2 border mx-1' >
       <div className='mb-1 w-full'>
         <img className='aspect-first' src={listCourses?.image} alt="" />
       </div>

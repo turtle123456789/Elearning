@@ -17,6 +17,7 @@ const cartSlice = createSlice({
         state.totalDiscount = state.data.reduce((totalDiscount, item) => totalDiscount + item.totalDiscount, 0);
     },
     removeItem: (state, action) => {
+        console.log('action.payload', action.payload)
         state.data = state.data.filter(item => item.id !== action.payload); 
         state.total = state.data.reduce((total, item) => total + item.price, 0);
         state.totalDiscount = state.data.reduce((totalDiscount, item) => totalDiscount + item.discount, 0);
