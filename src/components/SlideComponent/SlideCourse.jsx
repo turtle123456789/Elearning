@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import { CardCourse } from '../CardCourse/CardCourse';
 import { CustomPrevArrow } from '../ButtonComponent/ButtonPrev';
 import { CustomNextArrow } from '../ButtonComponent/ButtonNext';
-import { Link } from 'react-router-dom';
-export const SlideCourse = ({slideShow,listCourses}) => {
-    console.log('listCourses', listCourses)
+export const SlideCourse = ({slideShow,listCourses,typeCourse}) => {
+    const [listCourseType,setListCourseType] = useState([])
     const settings = {
         infinite: true,
         speed: 500,
@@ -35,13 +34,22 @@ export const SlideCourse = ({slideShow,listCourses}) => {
 
         ]
     };
+    useEffect(()=>{
+        if(typeCourse){
+            const listCourseType = listCourses.filter(course => course.type === typeCourse)
+            setListCourseType(listCourseType)
+        }else{
+            setListCourseType(listCourses)
+        }
+    },[typeCourse])
+    
   return (
     <Slider {...settings}>
-        {listCourses.length>0 && listCourses?.map((data,index)=>{
+        {listCourseType.length>0 && listCourseType?.map((data,index)=>{
             return(
-                <Link to="/course" key={`listCoursePopular-${index}`}>
+                <div  key={`listCoursePopular-${index}`}>
                     <CardCourse listCourses={data}/>      
-                </Link>
+                </div>
             )
         })}
 

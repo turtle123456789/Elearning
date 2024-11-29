@@ -5,7 +5,6 @@ import { BoxVideoComponent } from '../../components/BoxVideoComponent/BoxVideoCo
 import { useTranslation } from 'react-i18next'
 import { ButtonComponent } from '../../components/ButtonComponent/ButtonComponent'
 import { AccordionComponent } from '../../components/AccordionComponent/AccordionComponent'
-
 const CoursePage = () => {
 
     const {t} = useTranslation()
@@ -13,11 +12,38 @@ const CoursePage = () => {
     <div className='bg-white'>
         <div className='bg-first py-8 text-white' >
             <div className='relative max-w-[1184px] mx-auto '>
-                <div className='absolute z-50 right-12 shadow-lg'>
+                <div className='absolute z-40 right-12 shadow-lg'>
                     <BoxVideoComponent />
                 </div>
                 <div className='absolute z-50 right-12 shadow-lg' style={{top:"860px"}}>
-                    <BoxVideoComponent />
+                    <div className='bg-white w-[340px] text-first p-6'>
+                        <Link to = "/" className='text-eighth text-lg underline'>Linh Nguyen</Link>
+                        <p className='text-base mb-2'>Engineering Consultant, AWS Cloud Solution Architect</p>
+                        <div className='text-first flex gap-3 items-center'>
+                            <div>
+                                <img className='w-20 h-20' src="https://img-b.udemycdn.com/user/200_H/40987164_50c0_3.jpg" alt="" />
+                            </div>
+                            <div>
+                                <p className='flex items-center mb-1'>
+                                
+                                    <img className='w-4 h-4' src="https://img.icons8.com/material-sharp/16/star--v1.png" alt="star--v1"/>
+                                    <span>4,8 xếp hạng giảng viên</span>
+                                </p>
+                                <p className='flex items-center mb-1'>
+                                    <img className='w-4 h-4' src="https://img.icons8.com/forma-bold-filled/16/certificate.png" alt="certificate"/>
+                                    <span>982 đánh giá</span>
+                                </p>
+                                <p className='flex items-center mb-1'>
+                                    <img className='w-4 h-4' src="https://img.icons8.com/material-sharp/16/user-group-man-woman.png" alt="user-group-man-woman"/>
+                                    <span>4045 học viên</span>
+                                </p>
+                                <p className='flex items-center mb-1'>
+                                    <img className='w-4 h-4' src="https://img.icons8.com/ios-glyphs/16/circled-play.png" alt="circled-play"/>
+                                    <span>2 khóa học</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className='ml-4 max-w-[700px]'>
                     <div className='text-fourth flex items-center gap-2 font-bold'>
@@ -208,6 +234,7 @@ const CoursePage = () => {
                             Hẹn gặp lại bạn trong khóa học!
                         </strong>
                     </p>
+                    <br /><br />
                 </div>
             </div>
         </div>

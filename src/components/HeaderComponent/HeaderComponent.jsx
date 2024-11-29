@@ -6,10 +6,11 @@ import { DropDownMenu } from '../DropDownMenu/DropDownMenu';
 import { useTranslation } from 'react-i18next';
 import { ModelChoiceLanguage } from '../Models/ModelChoiceLanguage';
 import { BoxContent } from '../BoxContent/BoxContent';
-import { BoxCartCourse } from '../BoxContent/BoxCartCourse';
+import { useSelector } from 'react-redux';
 const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const listCart = useSelector((state) => state.cart.data)|| [];
     const [isHovered,setIsHovered] = useState("");
     const [categories, setCategories] = useState({
         level1: [],
@@ -221,6 +222,7 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
         setIsHovered("");
       };
     useEffect(() => {
+
         fectCategoti();
         if (isOpen || isOpenMoDel) {
         document.body.style.overflow = 'hidden';
@@ -233,7 +235,7 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
         };
     }, [isOpen,isOpenMoDel]);
   return (
-    <div className="flex items-center h-[72px] px-6 relative z-10 shadow-md shadow-[#00000059] tabletXs:justify-between">
+    <div className="flex items-center h-[72px] px-6 relative z-100 shadow-md shadow-[#00000059] tabletXs:justify-between">
         <ModelChoiceLanguage isOpenMoDel={isOpenMoDel} setIsOpenModel={setIsOpenModel}/>
         <button data-collapse-toggle="navbar-default" onClick={()=>setIsOpen(true)} className=" hidden tabletXs:block">
             <svg fill="#000000" width="45px" height="45px" viewBox="-8 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -247,7 +249,7 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
             <li className={`cursor-pointer ${isHovered===t('Thể loại') ? 'text-eighth' : ''}`} >
                 {t('Thể loại')}
             </li>
-            <div className={`${isHovered===t('Thể loại')?"block": "hidden"} absolute top-full z-0 `}>
+            <div className={`${isHovered===t('Thể loại')?"block": "hidden"} absolute top-full z-10 `}>
                 <DropDownMenu categories={categories}/>
             </div>
         </div>
@@ -262,16 +264,16 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
             </div>
         </form>
         <div className='relative h-full flex items-center' onMouseOver={()=>handleMouseOver(t("Study24"))} onMouseLeave={()=>handleMouseLeave()}>
-            <Link to="/business" className='px-3 hover:text-eighth labMd:hidden'>{t("Study24")}</Link>
-            <div className={`absolute top-full right-0 ${isHovered===t('Study24')?"block":"hidden"}`}>
+            <Link to="/account" className='px-3 hover:text-eighth labMd:hidden'>{t("Study24")}</Link>
+            <div className={`absolute top-full z-50 right-0 ${isHovered===t('Study24')?"block":"hidden"}`}>
                 <div className="w-72 mt-1">
                     <BoxContent h1={t("Cho phép nhóm của bạn truy cập vào hơn 27.000 khóa học hàng đầu của Udemy, ở mọi nơi và mọi lúc.")} textBn={t("Dùng thử Study24")} center={true} sizeH1={"19"}/>
                 </div>
             </div>
         </div>
         <div className='relative h-full flex items-center' onMouseOver={()=>handleMouseOver(t('Giảng dạy trên Udemy'))} onMouseLeave={()=>handleMouseLeave()}>
-            <Link to="/teaching" className='px-3 hover:text-eighth tablet:hidden'>{t('Giảng dạy trên Udemy')}</Link>
-            <div className={`absolute top-full right-0 ${isHovered===t('Giảng dạy trên Udemy')?"block":"hidden"}`}>
+            <Link to="/teacher" className='px-3 hover:text-eighth tablet:hidden'>{t('Giảng dạy trên Udemy')}</Link>
+            <div className={`absolute top-full z-50 right-0 ${isHovered===t('Giảng dạy trên Udemy')?"block":"hidden"}`}>
                 <div className="w-72 mt-1">
                     <BoxContent h1={t("Biến kiến thức của bạn thành cơ hội và tiếp cận với hàng triệu người trên thế giới.")} textBn={t("Tìm hiểu thêm")} center={true} sizeH1={"19"}/>
                 </div>
@@ -291,16 +293,21 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
                 </svg>
             </button>
             <div className='relative h-full flex items-center' onMouseOver={()=>handleMouseOver(t('Giỏ hàng'))} onMouseLeave={()=>handleMouseLeave()}>
-                <Link to="/cart" className='px-3'>
+                <Link to="/cart" className='px-3 relative '>
                     <svg className="clipRule24px] h-[24px] text-gray-800 hover:text-eighth" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
                     </svg>
+                    {listCart.length>0 &&
+                    <div className='absolute top-0 right-2 bg-red-600 text-white rounded-full w-3 h-3 flex items-center justify-center'>
+                        <span className='text-[8px]'>{listCart.length}</span>
+                    </div>
+                    }
                 </Link>
-                <div className={`absolute top-full right-0 ${isHovered===t('Giỏ hàng')?"block":"hidden"}`}>
+                {/* <div className={`absolute top-full right-0 ${isHovered===t('Giỏ hàng')?"block":"hidden"}`}>
                     <div className="w-72 mt-1">
                         <BoxCartCourse/>
                     </div>
-                </div>
+                </div> */}
             </div>
             
 
@@ -311,17 +318,12 @@ const HeaderComponent = ({isOpenMoDel,setIsOpenModel}) => {
         <Link to="/register" className='ml-2 tabletXs:hidden'>
             <ButtonComponent padding={3} text={t("Đăng ký")} bold={true} textColor={"white"} colorBg={"first"}/>
         </Link>
-        {/* <Link to="/instructor/user/view-notifications" className="px-3">
-            <svg className="w-[24px] h-[24px] text-gray-800 hover:text-eighth" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z"/>
-            </svg>
-        </Link> */}
+
         <li onClick={()=>setIsOpenModel(true)} className='ml-2 cursor-pointer flex h-10 justify-center items-center w-10 border-first border-solid border font-bold hover:bg-[#1739531f] tabletXs:hidden'>
             <svg className="w-[24px] h-[24px] text-gray-800 " width="24" height="24" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.5 16.5H19.5M5.5 8.5H19.5M4.5 12.5H20.5M12.5 20.5C12.5 20.5 8 18.5 8 12.5C8 6.5 12.5 4.5 12.5 4.5M12.5 4.5C12.5 4.5 17 6.5 17 12.5C17 18.5 12.5 20.5 12.5 20.5M12.5 4.5V20.5M20.5 12.5C20.5 16.9183 16.9183 20.5 12.5 20.5C8.08172 20.5 4.5 16.9183 4.5 12.5C4.5 8.08172 8.08172 4.5 12.5 4.5C16.9183 4.5 20.5 8.08172 20.5 12.5Z" stroke="#121923" stroke-width="1.2"/>
             </svg>
         </li>
-        {/* <Link to="/instructor/profile/basic-information" className="h-12 w-12"></Link> */}
     </div>
   )
 }

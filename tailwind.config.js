@@ -70,7 +70,7 @@
           fourth: "#5022c3",
           fifth: "#eceb98",
           sixth: "#3b198f",
-          seventh: "#8710d8",
+          seventh: "#ebebeb",
           eighth:"#a435f0",
         },
         backgroundImage:{
