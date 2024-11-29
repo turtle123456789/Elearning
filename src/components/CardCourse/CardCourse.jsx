@@ -23,9 +23,9 @@ export const CardCourse = ({listCourses}) => {
         <img className='aspect-first' src={listCourses?.image} alt="" />
       </div>
       <div className='w-full'>
-        <Link to={`/course${listCourses?.id}`}>
+        <Link to={`/course`}>
           <h3 className='mb-1 h-12'>
-            <Link className='crop-text2'>{listCourses?.title}</Link>
+            <p className='crop-text2'>{listCourses?.title}</p>
           </h3>
           <span className='text-third text-xs mb-1'>TS. Dang Xuan Tho</span>
         </Link>

@@ -9,7 +9,7 @@ const HomePage = () => {
   const {t} = useTranslation();
   const [activeButton, setActiveButton] = useState("");
   const [listTagCourses,setListTagCourses] = useState([]);
-  const [listCourses,setListCourses] = useState([
+  const listCourses = [
     {
       id: 0,
       image:"https://img-b.udemycdn.com/course/240x135/6212921_1abf_3.jpg",
@@ -478,7 +478,7 @@ const HomePage = () => {
       discount:20051,
       type:"Khoa học dữ liệu"
     },
-  ])
+  ]
 
   useEffect(()=>{
     const types = [...new Set(listCourses.map(course => course.type))];
