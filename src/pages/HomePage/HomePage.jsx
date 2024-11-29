@@ -491,19 +491,7 @@ const HomePage = () => {
           <SlideComponent/>
         </div>
         <div className='bg-third mb-8 '>
-        <div className='max-w-[1292px] mx-auto p-16 tabletXs:px-12 tabletXs:py-8'>
-          <p className='text-center text-[19px] text-third mb-6'>{t("Được hơn 16.000 công ty và hàng triệu học viên trên khắp thế giới tin dùng")}</p>
-          <div className='grid grid-cols-8 justify-items-center items-center tablet:grid-cols-4 tablet:gap-y-4'>
-            <div><img src="assets/brands/brand0.svg" alt="" /></div>
-            <div><img src="assets/brands/brand1.svg" alt="" /></div>
-            <div><img src="assets/brands/brand2.svg" alt="" /></div>
-            <div><img src="assets/brands/brand3.svg" alt="" /></div>
-            <div><img src="assets/brands/brand4.svg" alt="" /></div>
-            <div><img src="assets/brands/brand5.svg" alt="" /></div>
-            <div><img src="assets/brands/brand6.svg" alt="" /></div>
-            <div><img src="assets/brands/brand7.svg" alt="" /></div>
-          </div>
-        </div>
+
       </div>
       <div className='mx-auto max-w-[1292px] px-6'>
         <div className='mb-4'>
